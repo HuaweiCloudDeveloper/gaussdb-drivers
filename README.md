@@ -41,7 +41,8 @@
 ## GO
 
 1. 下载项目，针对PostgreSQL编译和测试通过
-  * 下载 pgx 项目源码。
+  * 从 github.com/jackc/pgx fork项目到 github.com/HuaweiCloudDeveloper/gaussdb-go。
+  * 下载 gaussdb-go 项目源码。
   * 确保项目能够在本地编译并通过所有PostgreSQL的测试用例。
 
 2. 重构模块路径和包名
