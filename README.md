@@ -28,6 +28,12 @@
 * 模块路径: github.com/HuaweiCloudDeveloper/gaussdb-go
 * 包名: gaussdb
 
+## NODEJS
+
+* 驱动名称: gaussdb-node
+* 模块路径: github.com/HuaweiCloudDeveloper/gaussdb-node
+* 包名: gaussdb
+
 # 重构步骤
 
 ## JAVA
@@ -59,6 +65,34 @@
 
 5. 针对GaussDB编译和测试通过
   * 针对GaussDB进行编译和测试，确保所有功能正常。
+
+  ## NODEJS
+
+1. FORK并下载项目(https://github.com/brianc/node-postgres)，针对PostgreSQL编译和测试通过
+  * 
+
+2. 重构模块路径和包名
+  * 将模块路径从 github.com/brianc/node-postgres 修改为 github.com/HuaweiCloudDeveloper/gaussdb-node
+  * 将包名从 pg 修改为 gaussdb。
+  * 重构所有pg关联模块链。
+
+3. 针对PostgreSQL编译和测试通过
+  * 确保在修改模块路径和包名后，项目仍然能够编译并通过所有PostgreSQL的测试用例。
+
+4. 修改认证逻辑
+  * 根据GaussDB的认证逻辑与加密模块，修改gaussdb-node中的认证与加密模块。
+  * 针对GaussDB跑相关模块测试用例通过
+
+5. 针对GaussDB编译和测试通过
+  * 针对GaussDB进行编译和跑测试用例，确保兼容的功能测试通过
+  * 对测试用例进行修改把针对pg特性的测试用例剔除/修改为gaussdb特性测试用例
+  * 重新测试通过
+
+6. 根据GaussDB新特性功能持续优化驱动迭代至兼容最新版Gaussdb
+  * 根据GaussDB最新特性功能编译优化驱动
+  * 针对GaussDB新特性驱动功能验证
+  * 完成GaussDB新特性功能测试用例编写
+
 
 # 详细开发任务
 
