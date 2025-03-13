@@ -1,3 +1,6 @@
+# GaussDB开源驱动介绍
+本项目的目的是帮助繁荣[GaussDB](https://www.huaweicloud.com/product/gaussdb.html)和[OpenGauss](https://opengauss.org/zh/)开源生态。项目包括常见语言的驱动（早期都通过PostgreSQL开源驱动进行构建），在这些开源驱动的基础上，贡献其他开源软件，包括ORM等。
+
 # 总体计划
 
 |语言| 驱动名称                                                                                 | 对应PostgreSQL驱动                                                 | ORM框架                                                  |备注|
@@ -7,7 +10,7 @@
 |Python| [gaussdb-python](https://github.com/HuaweiCloudDeveloper/gaussdb-python)             | [psycopg](https://github.com/psycopg/psycopg)                  | [SqlAlchemy](https://github.com/sqlalchemy/sqlalchemy) ||
 |Python| [gaussdb-python-async](https://github.com/HuaweiCloudDeveloper/gaussdb-python-async) | [asyncpg](https://github.com/MagicStack/asyncpg)               | [SqlAlchemy](https://github.com/sqlalchemy/sqlalchemy) ||
 |NodeJS| [gaussdb-node](https://github.com/HuaweiCloudDeveloper/gaussdb-node)                 | [node-postgres](https://github.com/brianc/node-postgres)       | [TypeORM](https://github.com/typeorm/typeorm)          ||
-|.NET| [gaussdb-dotnet](https://github.com/HuaweiCloudDeveloper/gaussdb-dotnet)               | [npgsql](https://github.com/npgsql/npgsql)                     | [Entity Framework](https://github.com/dotnet/ef6)      ||
+|.NET| [gaussdb-dotnet](https://github.com/HuaweiCloudDeveloper/gaussdb-dotnet)               | [npgsql](https://github.com/npgsql/npgsql)                     | [Entity Framework Core](https://github.com/HuaweiCloudDeveloper/gaussdb-dotnet-efcore)      ||
 |PHP| [gaussdb-php](https://github.com/HuaweiCloudDeveloper/gaussdb-php)               | [pdo_pgsql](https://github.com/php/php-src/tree/master/ext/pdo_pgsql)                     | [Laravel](https://github.com/laravel/laravel)      |代码需要推送PHP官网|
 
 ## 第一阶段目标
