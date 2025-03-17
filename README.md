@@ -38,6 +38,12 @@
 * 模块路径: github.com/HuaweiCloudDeveloper/gaussdb-node
 * 包名: gaussdb
 
+## C#
+
+- 驱动名称：GaussDB
+- 模块路径：github.com/HuaweiCloudDeveloper/gaussdb-dotnet
+- Nuget包名：GaussDB
+
 # 重构步骤
 
 ## JAVA
