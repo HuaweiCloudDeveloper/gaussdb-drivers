@@ -59,7 +59,7 @@
 * 模块路径: github.com/HuaweiCloudDeveloper/gaussdb-node
 * 包名: gaussdb
 
-## C#
+## .NET
 
 - 驱动名称：GaussDB
 - 模块路径：github.com/HuaweiCloudDeveloper/gaussdb-dotnet
@@ -121,6 +121,22 @@
 * 对测试用例进行修改把针对pg特性的测试用例剔除/修改为gaussdb特性测试用例
 * 重新测试通过
 
+## .NET
+
+1.下载项目，写一个简单测试程序，针对npgsql编译和测试通过。
+
+2.修改认证逻辑
+
+3.基于npgsql进行修改
+
+- 拉取npgsql最新代码
+- 替换npgsql命名空间为GaussDB
+- 替换代码中出现的npgsql词汇的内容
+- 扩展GaussDB新特性
+
+4.测试程序针对GaussDB编译和测试通过
+
+5.在nuget平台发布
 
 # 详细开发任务
 
