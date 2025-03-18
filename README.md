@@ -61,82 +61,15 @@
 
 ## .NET
 
-- 驱动名称：GaussDB
-- 模块路径：github.com/HuaweiCloudDeveloper/gaussdb-dotnet
-- Nuget包名：GaussDB
-
-# 重构步骤
-
-## JAVA
-
-* 下载项目，写一个简单测试程序，针对PostgreSQL编译和测试通过。
-* 修改认证逻辑
-* 测试程序针对GaussDB编译和测试通过
-* 重构group-id, artifactid, 重构package
-* 针对PostgreSQL编译和测试通过
-
-## GO
-
-1. 下载项目，针对PostgreSQL编译和测试通过
-
-* 下载 pgx 项目源码。
-* 确保项目能够在本地编译并通过所有PostgreSQL的测试用例。
-
-2. 重构模块路径和包名
-
-* 将模块路径从 github.com/jackc/pgx 修改为 github.com/HuaweiCloudDeveloper/gaussdb-go。
-* 将包名从 pgx 修改为 gaussdb。
-* 更新所有导入路径和包引用。
-
-3. 针对PostgreSQL编译和测试通过
-
-* 确保在修改模块路径和包名后，项目仍然能够编译并通过所有PostgreSQL的测试用例。
-
-4. 修改认证逻辑
-
-* 根据GaussDB的认证机制，修改驱动中的认证逻辑。
-* 确保新的认证逻辑能够与GaussDB正常通信。
-
-5. 针对GaussDB编译和测试通过
-
-* 针对GaussDB进行编译和测试，确保所有功能正常。
-
-## NODEJS
-
-1. FORK并下载项目 [node-postgres](https://github.com/brianc/node-postgres)，针对PostgreSQL编译和测试通过
-2. 修改认证逻辑
-
-* 根据GaussDB的认证逻辑与加密模块，修改gaussdb-node中的认证与加密模块。
-* 针对GaussDB跑相关模块测试用例通过
-
-3. 重构模块路径和包名
-
-* 将模块路径从 github.com/brianc/node-postgres 修改为 github.com/HuaweiCloudDeveloper/gaussdb-node
-* 将包名从 pg 修改为 gaussdb。
-* 重构所有pg关联模块链。
-
-4. 针对GaussDB编译和测试通过
-
-* 针对GaussDB进行编译和跑测试用例，确保兼容的功能测试通过
-* 对测试用例进行修改把针对pg特性的测试用例剔除/修改为gaussdb特性测试用例
-* 重新测试通过
-
-## .NET
-
-1.下载项目，写一个简单测试程序，针对npgsql编译和测试通过。
-
-2.修改认证逻辑
-
-3.基于npgsql进行修改
-
-- 拉取npgsql最新代码
-- 替换npgsql命名空间为GaussDB
-- 替换代码中出现的npgsql词汇的内容
-- 扩展GaussDB新特性
-
-4.测试程序针对GaussDB编译和测试通过
-
-5.在nuget平台发布
+- 项目信息
+  - 项目名称（仓库名称）：HuaweiCloud.GaussDB
+  - 驱动名称（文档、传播）：GaussDB
+- Nuget发布
+  - 包名：HuaweiCloud.Drivers.GaussDB
+- 应用开发
+  - namespace：HuaweiCloud.GaussDB
+  - 连接串：`dbc:gaussdb://<host>:<port>/<database>`
+  - 驱动名称：GaussDB
 
 # 详细开发任务
 
