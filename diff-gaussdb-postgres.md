@@ -29,8 +29,8 @@ WHERE zipcode <> '21201';
 * 补充说明
 
 参考链接：
-https://www.postgresql.org/docs/current/sql-insert.html
-https://support.huaweicloud.com/centralized-devg-v8-gaussdb/gaussdb-42-0653.html#section4
+    * https://www.postgresql.org/docs/current/sql-insert.html
+    * https://support.huaweicloud.com/centralized-devg-v8-gaussdb/gaussdb-42-0653.html#section4
 
 ### 实现数据实时复制功能
 
@@ -50,9 +50,44 @@ CREATE SUBSCRIPTION mysub CONNECTION 'host=XX.XX.XX.XXX port=8000 user= user_nam
 * 补充说明
 
 参考链接：
-https://bbs.huaweicloud.com/forum/thread-0211178860880205142-1-1.html
+    * https://bbs.huaweicloud.com/forum/thread-0211178860880205142-1-1.html
 
+### gaussdbjdbc.jar的executeBatch返回值不符合JDBC规范
+
+* 补充说明
+
+参考链接：
+    * https://bbs.huaweicloud.com/forum/thread-02104174303512776081-1-1.html
+
+### SELECT pg_type.* FROM pg_catalog.pg_type 缺少oid字段
+
+* 补充说明
+
+参考链接：
+    * https://bbs.huaweicloud.com/forum/thread-0274178187455582064-1-1.html
 
 ## GaussDB不存在的功能
 
+### 不支持refcursor关键字
+
+* 补充说明
+
+参考链接：
+    * https://bbs.huaweicloud.com/forum/thread-0211178353127283084-1-1.html
+
 ## GaussDB已知缺陷
+
+### FETCH FIRST n ROWS提示语法错误
+
+* 补充说明
+
+参考链接：
+    * https://bbs.huaweicloud.com/forum/thread-02104174364146264084-1-1.html
+
+### SET LOCK_TIMEOUT提示错误
+
+* 补充说明
+
+参考链接：
+    * https://bbs.huaweicloud.com/forum/thread-02127178278029106066-1-1.html
+
