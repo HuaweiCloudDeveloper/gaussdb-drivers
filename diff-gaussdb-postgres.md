@@ -118,6 +118,13 @@ CREATE SUBSCRIPTION mysub CONNECTION 'host=XX.XX.XX.XXX port=8000 user= user_nam
 参考链接：
 * https://bbs.huaweicloud.com/forum/thread-0210178943513179110-1-1.html
 
+### 不支持 NOFITY statement
+
+* 补充说明
+
+参考链接：
+* https://bbs.huaweicloud.com/forum/thread-0234178943691111112-1-1.html
+
 ## GaussDB已知缺陷
 
 ### FETCH FIRST n ROWS提示语法错误
