@@ -89,6 +89,13 @@ CREATE SUBSCRIPTION mysub CONNECTION 'host=XX.XX.XX.XXX port=8000 user= user_nam
 参考链接：
 * https://bbs.huaweicloud.com/forum/thread-0211178940977329145-1-1.html
 
+### 不支持LargeObject
+
+* 补充说明
+
+参考链接：
+* https://bbs.huaweicloud.com/forum/thread-0211178941356334146-1-1.html
+
 ## GaussDB已知缺陷
 
 ### FETCH FIRST n ROWS提示语法错误
