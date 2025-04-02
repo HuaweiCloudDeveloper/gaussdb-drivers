@@ -68,12 +68,19 @@ CREATE SUBSCRIPTION mysub CONNECTION 'host=XX.XX.XX.XXX port=8000 user= user_nam
 
 ## GaussDB不存在的功能
 
+### 不支持CREATE/ALTER/DROP DOMAIN
+
+* 补充说明
+
+参考链接：
+    * https://bbs.huaweicloud.com/forum/thread-0210178360425351069-1-1.html
+
 ### 不支持refcursor关键字
 
 * 补充说明
 
 参考链接：
-    * https://bbs.huaweicloud.com/forum/thread-0211178353127283084-1-1.html
+* https://bbs.huaweicloud.com/forum/thread-0211178353127283084-1-1.html
 
 ## GaussDB已知缺陷
 
