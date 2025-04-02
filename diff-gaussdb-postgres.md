@@ -104,6 +104,13 @@ CREATE SUBSCRIPTION mysub CONNECTION 'host=XX.XX.XX.XXX port=8000 user= user_nam
 * https://bbs.huaweicloud.com/forum/thread-0213178941810463121-1-1.html
 * https://support.huaweicloud.com/intl/zh-cn/centralized-devg-v2-gaussdb/gaussdb_42_0501.html
 
+### 不支持 临时表Serial
+
+* 补充说明
+
+参考链接：
+* https://bbs.huaweicloud.com/forum/thread-0213178941810463121-1-1.html
+
 ## GaussDB已知缺陷
 
 ### FETCH FIRST n ROWS提示语法错误
