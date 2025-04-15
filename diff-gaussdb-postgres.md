@@ -569,6 +569,13 @@ insert into BasicEntity as be1_0(id,data) values (1,'John') on conflict do nothi
 insert into BasicEntity as be1_0(id,data) values (1,'John') on conflict do nothing
 ```
 
+### 不支持 macaddr8类型
+
+* 补充说明
+
+参考链接：
+* https://bbs.huaweicloud.com/forum/thread-0211180066801704005-1-1.html
+
 
 
 ## GaussDB已知缺陷
