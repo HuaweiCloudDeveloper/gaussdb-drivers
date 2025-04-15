@@ -301,6 +301,12 @@ where
 )
 ```
 
+### GaussDB NUMERIC 类型精度没PostgreSQL高
+* 补充说明
+
+参考链接：
+* https://bbs.huaweicloud.com/forum/thread-0211180070242768009-1-1.html
+
 
 ## GaussDB不存在的功能
 
