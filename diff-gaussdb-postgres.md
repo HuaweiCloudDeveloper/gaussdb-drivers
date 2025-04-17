@@ -798,6 +798,16 @@ postgres=# select 4/3;
 参考链接：
 * https://bbs.huaweicloud.com/forum/thread-0233180004755556002-1-1.html
 
+### 暂时不支持sslmode=verify-full模式
+报类似错误: `server common name "192.168.0.175" does not matchhost name "1.95.160.45"`
+- `1.95.160.45`是gaussdb实例的ip
+- `192.168.0.175`是证书里设置的ip
+
+应该是证书里ip的问题,导致证书不能验证gaussdb实例的ip, 在和gaussdb实例一个网段的机器上, 可以用gsql连接这个ip: `192.168.0.175`
+
+参考链接
+* https://bbs.huaweicloud.com/forum/thread-0202180167004930015-1-1.html
+
 ## JDBC(gaussjdbc.jar)已知缺陷
 
 ### FETCH FIRST n ROWS提示语法错误
