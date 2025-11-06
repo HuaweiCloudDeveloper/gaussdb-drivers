@@ -7,6 +7,57 @@
 
 ## GaussDB与PostgreSQL存在差异
 
+
+### 空字符串 '' 与 NOT NULL 的行为差异
+
+* PosgreSQL写法
+
+```sql
+drop table test_adchfl_pony;
+CREATE TABLE test_adchfl_pony (
+    id serial NOT NULL PRIMARY KEY,
+    pink integer NOT NULL
+);
+
+INSERT INTO test_adchfl_pony (pink) VALUES (3);
+
+ALTER TABLE test_adchfl_pony ADD COLUMN empty varchar(10) DEFAULT '';
+UPDATE test_adchfl_pony SET empty = ' ';
+ALTER TABLE test_adchfl_pony ALTER COLUMN empty SET NOT NULL;
+UPDATE test_adchfl_pony SET empty = '';
+
+```
+
+* GaussDB写法
+
+最后一行执行报错：
+
+```sql
+UPDATE test_adchfl_pony SET empty = '';
+```
+
+报错：
+
+```sql
+ERROR: NotNullViolation: column "empty" violates not-null constraint
+DETAIL: Failing row contains ...
+```
+
+**原因**：
+
+GaussDB在兼容 Oracle 语义时，将空字符串 '' 视为 NULL。
+因此：
+在 NOT NULL 列上插入 '' 等价于插入 NULL。
+导致 NotNullViolation 错误。
+这与 PostgreSQL/openGauss 完全不同。
+
+* 补充说明
+
+参考连接：
+* https://support.huaweicloud.com/centralized-devg-v8-gaussdb/gaussdb-42-0577.html
+* https://neon.com/postgresql/postgresql-tutorial/postgresql-not-null-constraint
+
+
 ### 实现 Upsert(update + insert) 功能语法差异
 
 * PosgreSQL写法

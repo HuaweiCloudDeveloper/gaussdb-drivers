@@ -19,6 +19,25 @@
 
 * 参考信息：https://gitcode.com/opengauss/openGauss-server/issues/7263
 
+### JSON类型支持差异
+
+* GaussDB 都支持：
+
+```sql
+SELECT JSON_CONTAINS('{"a":1,"b":2}'::json, '{"a":1}'); 
+SELECT '{"a":1,"b":2}'::jsonb @> '{"a":1}'::jsonb;
+```
+
+* OpenGauss 只支持：
+
+```sql
+SELECT '{"a":1,"b":2}'::jsonb @> '{"a":1}'::jsonb;
+```
+
+* 参考信息：
+* https://support.huaweicloud.com/centralized-devg-v8-gaussdb/gaussdb-42-2032.html
+* https://docs.opengauss.org/zh/docs/7.0.0-RC2/docs/SQLReference/JSON-JSONB%E7%B1%BB%E5%9E%8B.html
+
 ## GaussDB不存在的功能
 
 ## OpenGauss不存在的功能
