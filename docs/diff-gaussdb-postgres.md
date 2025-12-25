@@ -459,7 +459,7 @@ SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
 SELECT 'Inner: ' || current_setting('transaction_isolation') AS isolation_level_inner;
 
 ROLLBACK;
-```  
+```
 
 * GaussDB
 在 GaussDB 上，执行脚本不会报错，而且隔离级别会被更改：
@@ -495,6 +495,16 @@ ERROR:  SET TRANSACTION ISOLATION LEVEL must be called before any query
 
 ### PostgreSQL与GaussDB中SET SESSION AUTHORIZATION 不同
 参考链接：https://bbs.huaweicloud.com/forum/thread-0236186944607404002-1-1.html
+
+### GaussDB对XML内容处理解析差异
+
+GaussDB 抛出 invalid XML content 错误，PostgreSQL 会丢弃 XML declaration，返回空
+
+涉及SQL：
+
+```sql
+select '<?xml version="1.0"?>'::xml
+```
 
 
 ## GaussDB不存在的功能
