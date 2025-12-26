@@ -503,7 +503,7 @@ GaussDB 抛出 invalid XML content 错误，PostgreSQL 会丢弃 XML declaration
 涉及SQL：
 
 ```sql
-select '<?xml version="1.0"?>'::xml
+select '<?xml version="1.0"?>'::xml;
 ```
 
 
@@ -539,7 +539,9 @@ select '<?xml version="1.0"?>'::xml
 
 ### 不支持 Serializable
 
-* 补充说明
+GaussDB 不支持通过 SET SESSION CHARACTERISTICS 修改会话serializable事务隔离级别。
+
+GaussDB 在实际应用中允许设置该级别，但在内部逻辑上将其**隐式降级**，使其行为等价于 REPEATABLE READ（可重复读）
 
 参考链接：
 * https://bbs.huaweicloud.com/forum/thread-0213178941810463121-1-1.html
@@ -620,15 +622,6 @@ postgres=# show unix_socket_directories;
 ### 不支持**DISCARD**关键字
 
 - Discard非保留关键字，且在GaussDB中执行后出现异常 "DISCARD statement is not yet supported."
-
-参考连接：
-
-https://support.huaweicloud.com/centralized-devg-v3-gaussdb/gaussdb-42-0327.html
-
-
-### 不支持**UNLISTEN**关键字
-
-- UNLISTEN非保留关键字，且在GaussDB中执行后出现异常 "UNLISTENstatement is not yet supported."
 
 参考连接：
 
