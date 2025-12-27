@@ -627,7 +627,19 @@ postgres=# show unix_socket_directories;
 
 https://support.huaweicloud.com/centralized-devg-v3-gaussdb/gaussdb-42-0327.html
 
+### 不支持INHERITS
+
+- CREATE TABLE INHERITS 功能尚未支持
+
+PosgreSQL:
+
+```sql
+CREATE TABLE base (c00 varchar, c01 varchar); 
+CREATE TABLE child_00 () inherits (base);
+```
+
 ### unnest语法不支持
+
 * GaussDB写法
 ```
 select
