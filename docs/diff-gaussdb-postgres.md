@@ -931,7 +931,15 @@ postgres=# select ssl from pg_stat_ssl;
 参考链接：
 * https://bbs.huaweicloud.com/forum/thread-0211180066801704005-1-1.html
 
+### pg_lsn 类型不支持
 
+pg_lsn（PostgreSQL Log Sequence Number）用于表示 WAL 中的位置,GaussDB未支持pg_lsn类型的解析
+
+PostgreSQL:
+
+```sql
+SELECT '0/16B6C50'::pg_lsn;
+```
 
 ### pg_attribute 中没有 attidentity字段
 
