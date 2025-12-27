@@ -500,12 +500,21 @@ ERROR:  SET TRANSACTION ISOLATION LEVEL must be called before any query
 
 GaussDB 抛出 invalid XML content 错误，PostgreSQL 会丢弃 XML declaration，返回空
 
-涉及SQL：
+PosgreSQL:
 
 ```sql
 select '<?xml version="1.0"?>'::xml;
 ```
 
+### SELECT 空 target list 不支持
+
+PostgreSQL 允许执行不包含任何目标列的 SELECT,而GaussDB执行失败
+
+PosgreSQL:
+
+```sql
+SELECT;
+```
 
 ## GaussDB不存在的功能
 
