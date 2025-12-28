@@ -587,7 +587,18 @@ postgres=#
 参考链接：
 * https://bbs.huaweicloud.com/forum/thread-0211180003903912003-1-1.html
 
+### xid8 类型不支持
+
+xid8 是 PostgreSQL 引入的新一代事务 ID 类型，GaussDB对于xid8 类型未实现或者GaussDB内部没有暴露该类型给用户，或者实现路径与 PG 不同
+
+PostgreSQL:
+
+```sql
+SELECT '42'::xid8;
+```
+
 ### 不支持SUPERUSER关键字
+
 需要使用`SYSADMIN`代替.
 
 PosgreSQL:
