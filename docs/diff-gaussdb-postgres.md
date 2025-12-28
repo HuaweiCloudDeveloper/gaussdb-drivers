@@ -516,6 +516,25 @@ PosgreSQL:
 SELECT;
 ```
 
+### real 类型精度与取值差异
+
+GaussDB与PostgreSQL 在real类型的精度存在差异
+
+PostgreSQL:
+
+```sql
+create temp table test_type(col real);
+insert into test_type(col) values(101.3);
+select col from test_type;
+postgres=# select col from test_type;
+  col
+-------
+ 101.3
+(1 row)
+```
+
+上述SQL语句执行结果不一致，PostgreSQL为101.3，而GaussDB为101.30003
+
 ## GaussDB不存在的功能
 
 ### 不支持refcursor关键字
