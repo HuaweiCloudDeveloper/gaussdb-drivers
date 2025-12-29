@@ -459,7 +459,7 @@ SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
 SELECT 'Inner: ' || current_setting('transaction_isolation') AS isolation_level_inner;
 
 ROLLBACK;
-```  
+```
 
 * GaussDB
 在 GaussDB 上，执行脚本不会报错，而且隔离级别会被更改：
@@ -496,6 +496,44 @@ ERROR:  SET TRANSACTION ISOLATION LEVEL must be called before any query
 ### PostgreSQL与GaussDB中SET SESSION AUTHORIZATION 不同
 参考链接：https://bbs.huaweicloud.com/forum/thread-0236186944607404002-1-1.html
 
+### GaussDB对XML内容处理解析差异
+
+GaussDB 抛出 invalid XML content 错误，PostgreSQL 会丢弃 XML declaration，返回空
+
+PosgreSQL:
+
+```sql
+select '<?xml version="1.0"?>'::xml;
+```
+
+### SELECT 空 target list 不支持
+
+PostgreSQL 允许执行不包含任何目标列的 SELECT,而GaussDB执行失败
+
+PosgreSQL:
+
+```sql
+SELECT;
+```
+
+### real 类型精度与取值差异
+
+GaussDB与PostgreSQL 在real类型的精度存在差异
+
+PostgreSQL:
+
+```sql
+create temp table test_type(col real);
+insert into test_type(col) values(101.3);
+select col from test_type;
+postgres=# select col from test_type;
+  col
+-------
+ 101.3
+(1 row)
+```
+
+上述SQL语句执行结果不一致，PostgreSQL为101.3，而GaussDB为101.30003
 
 ## GaussDB不存在的功能
 
@@ -529,7 +567,9 @@ ERROR:  SET TRANSACTION ISOLATION LEVEL must be called before any query
 
 ### 不支持 Serializable
 
-* 补充说明
+GaussDB 不支持通过 SET SESSION CHARACTERISTICS 修改会话serializable事务隔离级别。
+
+GaussDB 在实际应用中允许设置该级别，但在内部逻辑上将其**隐式降级**，使其行为等价于 REPEATABLE READ（可重复读）
 
 参考链接：
 * https://bbs.huaweicloud.com/forum/thread-0213178941810463121-1-1.html
@@ -566,7 +606,18 @@ postgres=#
 参考链接：
 * https://bbs.huaweicloud.com/forum/thread-0211180003903912003-1-1.html
 
+### xid8 类型不支持
+
+xid8 是 PostgreSQL 引入的新一代事务 ID 类型，GaussDB对于xid8 类型未实现或者GaussDB内部没有暴露该类型给用户，或者实现路径与 PG 不同
+
+PostgreSQL:
+
+```sql
+SELECT '42'::xid8;
+```
+
 ### 不支持SUPERUSER关键字
+
 需要使用`SYSADMIN`代替.
 
 PosgreSQL:
@@ -615,16 +666,19 @@ postgres=# show unix_socket_directories;
 
 https://support.huaweicloud.com/centralized-devg-v3-gaussdb/gaussdb-42-0327.html
 
+### 不支持INHERITS
 
-### 不支持**UNLISTEN**关键字
+- CREATE TABLE INHERITS 功能尚未支持
 
-- UNLISTEN非保留关键字，且在GaussDB中执行后出现异常 "UNLISTENstatement is not yet supported."
+PosgreSQL:
 
-参考连接：
-
-https://support.huaweicloud.com/centralized-devg-v3-gaussdb/gaussdb-42-0327.html
+```sql
+CREATE TABLE base (c00 varchar, c01 varchar); 
+CREATE TABLE child_00 () inherits (base);
+```
 
 ### unnest语法不支持
+
 * GaussDB写法
 ```
 select
@@ -907,7 +961,15 @@ postgres=# select ssl from pg_stat_ssl;
 参考链接：
 * https://bbs.huaweicloud.com/forum/thread-0211180066801704005-1-1.html
 
+### pg_lsn 类型不支持
 
+pg_lsn（PostgreSQL Log Sequence Number）用于表示 WAL 中的位置,GaussDB未支持pg_lsn类型的解析
+
+PostgreSQL:
+
+```sql
+SELECT '0/16B6C50'::pg_lsn;
+```
 
 ### pg_attribute 中没有 attidentity字段
 
